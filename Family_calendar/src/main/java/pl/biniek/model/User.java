@@ -21,12 +21,12 @@ import javax.validation.constraints.Size;
 //        @NamedQuery(name = "Uzer.findByEmail", query = "SELECT d FROM Uzer d WHERE d.email = :email"),
 //     @NamedQuery(name = "Uzer.doesEmailExists", query = "SELECT d FROM Uzer d WHERE d.email = :email"),
 //})
- @TableGenerator(name = "CourseGen", table = "GENERATOR", pkColumnName = "ENTITY_NAME", valueColumnName = "ID_RANGE", pkColumnValue = "Course", initialValue = 200, allocationSize = 7919)
+ 
 public class User extends AbstractEntity implements Serializable {//user
 
     @Id
     @Column(name = "id", updatable = false)
-    @TableGenerator(name = "UzerGen", table = "GENERATOR", pkColumnName = "ENTITY_NAME", valueColumnName = "ID_RANGE", pkColumnValue = "User", initialValue = 400, allocationSize =  6053 )
+    @TableGenerator(name = "UzerGen", table = "GENERATOR", initialValue = 400, allocationSize =  6053 )
     @GeneratedValue(strategy = GenerationType.TABLE,
             generator = "UserGen")
     private Long id;
@@ -68,7 +68,7 @@ public class User extends AbstractEntity implements Serializable {//user
     }
 
     @Override
-    protected Object getId() {
+    public Object getId() {
         return id;
     }
     

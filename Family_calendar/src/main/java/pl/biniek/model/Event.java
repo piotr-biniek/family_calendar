@@ -5,8 +5,6 @@
  */
 package pl.biniek.model;
 
-import static java.awt.SystemColor.info;
-import static java.awt.geom.Point2D.distance;
 import java.io.Serializable;
 import java.time.Duration;
 import java.time.LocalDateTime;
@@ -30,32 +28,22 @@ public class Event extends AbstractEntity implements Serializable {
 
     @Id
     @Column(name = "id", updatable = false)
-    @TableGenerator(name = "CourseGen", table = "GENERATOR", pkColumnName = "ENTITY_NAME", valueColumnName = "ID_RANGE", pkColumnValue = "Course", initialValue = 200, allocationSize = 7919)
+    @TableGenerator(name = "EventGenerator", table = "GENERATOR", valueColumnName = "ID_RANGE", initialValue = 200, allocationSize = 7919)
     @GeneratedValue(strategy = GenerationType.TABLE,
-            generator = "CourseGen")
+            generator = "EventGenerator")
     private long id;
 
     @NotNull
     @Column(name = "name", unique = true, nullable = false, length = 256)
     private String name;
 
-    
     @NotNull
-    @Column(name = "dateOfStart",  nullable = false)
-   // @Temporal(javax.persistence.TemporalType.TIMESTAMP)// nie jest wymagane w LDT
-    private LocalDateTime dateOfStart;
+    @Column(name = "dateOfEvent", nullable = false)
+    private LocalDateTime dateOfEvent;
 
-    
-    //@NotNull
-    @Column(name="duration", unique = false, nullable = true)
-    private Duration furation;
-
- 
-     
-    
-
-
-
+    @NotNull
+    @Column(name = "duration", unique = false, nullable = true)
+    private Duration duration;
 
     /**
      * Get the value of id
@@ -76,32 +64,33 @@ public class Event extends AbstractEntity implements Serializable {
         this.id = id;
     }
 
+    public LocalDateTime getDateOfEvent() {
+        return dateOfEvent;
+    }
+
+    public void setDateOfEvent(LocalDateTime dateOfEvent) {
+        this.dateOfEvent = dateOfEvent;
+    }
+
+    public Duration getDuration() {
+        return duration;
+    }
+
     /**
      * Get the value of phone
      *
      * @return the value of phone
      */
-    
     /**
      * Get the value of dateOfStart
      *
      * @return the value of dateOfStart
      */
-    public LocalDateTime getDateOfStart() {
-        return dateOfStart;
+    public void setDuration(Duration duration) {
+        this.duration = duration;
     }
 
-    /**
-     * Set the value of dateOfStart
-     *
-     * @param dateOfStart new value of dateOfStart
-     */
-    public void setDateOfStart(LocalDateTime dateOfStart) {
-        this.dateOfStart = dateOfStart;
-    }
-
-    
-       public String getName() {
+    public String getName() {
         return name;
     }
 
@@ -113,26 +102,25 @@ public class Event extends AbstractEntity implements Serializable {
     public void setName(String name) {
         this.name = name;
     }
-   /**
+
+    /**
      * old method taken from studies - should be rebuilded
      *
-     * return value 
+     * return value
      */
     @Override
     protected String getBusinessKey() {//todo
-        
-        return "id :"+String.valueOf(id)+", name :"+name;
-        
+
+        return "id :" + String.valueOf(id) + ", name :" + name;
+
     }
 
-   /**
-     * Generates informacion for mailing confirmation 
+    /**
+     * Generates informacion for mailing confirmation
      *
      */
-     public String toMail() {
-        return "Course{ name=" + name + '}';//todo
+    public String toMail() {
+        return "";//todo
     }
-
-
 
 }
