@@ -5,9 +5,12 @@
  */
 package pl.biniek.facade;
 
+import java.time.LocalDateTime;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import pl.biniek.model.Event;
 
 /**
@@ -28,5 +31,18 @@ public class EventFacade extends AbstractFacade<Event> {
     public EventFacade() {
         super(Event.class);
     }
+
+    public List<Event> findBeetwenDates(LocalDateTime start,LocalDateTime end) {
+          
+        Query tq = em.createNamedQuery("Event.findBeetwenDates");
+        tq.setParameter("start", start );
+        tq.setParameter("end", end );
+        return  tq.getResultList();
+        
+        
+    
+    
+    }
+    
     
 }

@@ -26,7 +26,7 @@ public class User extends AbstractEntity implements Serializable {//user
 
     @Id
     @Column(name = "id", updatable = false)
-    @TableGenerator(name = "UzerGen", table = "GENERATOR", initialValue = 400, allocationSize =  6053 )
+    @TableGenerator(name = "UserGen", table = "GENERATOR", initialValue = 400, allocationSize =  6053 )
     @GeneratedValue(strategy = GenerationType.TABLE,
             generator = "UserGen")
     private Long id;

@@ -13,6 +13,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.TableGenerator;
 import javax.validation.constraints.NotNull;
@@ -23,6 +25,10 @@ import javax.validation.constraints.NotNull;
  */
 @Entity
 @Table(name = "Event")
+@NamedQueries({
+        
+      @NamedQuery(name = "Event.findBeetwenDates", query = "SELECT d FROM Event d WHERE d.dateOfEvent > :start and d.dateOfEvent < :end"),
+})
 
 public class Event extends AbstractEntity implements Serializable {
 
