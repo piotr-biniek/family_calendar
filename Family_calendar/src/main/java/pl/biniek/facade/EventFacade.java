@@ -5,6 +5,8 @@
  */
 package pl.biniek.facade;
 
+import java.time.Duration;
+import java.time.LocalDateTime;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -28,5 +30,16 @@ public class EventFacade extends AbstractFacade<Event> {
     public EventFacade() {
         super(Event.class);
     }
+    public void create(Event entity) {
+        System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ START");
+        Event tst = new Event();
+        tst.setName("qwerty");
+        tst.setDateOfEvent(LocalDateTime.now());
+        tst.setDuration(Duration.ofHours(2));
+        System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ MID");
+        getEntityManager().persist(tst);
+        System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ END");
+    }
+
     
 }
