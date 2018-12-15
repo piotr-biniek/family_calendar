@@ -32,6 +32,7 @@ public abstract class AbstractFacade<T> implements Serializable{
     }
 
     public void remove(T entity) {
+        System.out.println("S4");
         getEntityManager().remove(getEntityManager().merge(entity));
     }
 

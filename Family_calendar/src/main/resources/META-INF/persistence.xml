@@ -10,7 +10,6 @@
     <properties>
       <!--///////////////////////////////////////////////// dodano propsa do hibernate 4.3 ///////////////////////////-->
       <property name="hibernate.transaction.jta.platform" value="org.hibernate.service.jta.platform.internal.SunOneJtaPlatform"/>
-      <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
     </properties>
   </persistence-unit>
 </persistence>

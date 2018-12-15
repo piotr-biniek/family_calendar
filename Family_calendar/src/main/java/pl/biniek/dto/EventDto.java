@@ -55,6 +55,11 @@ public class EventDto implements Serializable {
         eventFacade.remove(event);
 
     }
+
+    public void deleteEvent(Event event) {
+        System.out.println("st3");
+        eventFacade.remove(event);
+    }
  }
 
     

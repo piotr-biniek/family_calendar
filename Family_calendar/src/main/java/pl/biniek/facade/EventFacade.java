@@ -31,13 +31,10 @@ public class EventFacade extends AbstractFacade<Event> {
         super(Event.class);
     }
     public void create(Event entity) {
-        System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ START");
-        Event tst = new Event();
-        tst.setName("qwerty");
-        tst.setDateOfEvent(LocalDateTime.now());
-        tst.setDuration(Duration.ofHours(2));
-        System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ MID");
-        getEntityManager().persist(tst);
+        System.out.println(entity.getName());
+  
+        System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ Start");
+        getEntityManager().persist(entity);
         System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ END");
     }
 

@@ -11,8 +11,6 @@ import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
 
 import javax.faces.application.FacesMessage;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -42,9 +40,10 @@ public class ScheduleView implements Serializable {
 
     @PostConstruct
     public void init() {
-        //List <ScheduleEvent> lista = callendarControler.getSheduleEvent();
-           eventModel = new DefaultScheduleModel();
-        callendarControler.doSthing();
+      //  List <ScheduleEvent> lista = callendarControler.getSheduleEvent();
+      //     eventModel = new DefaultScheduleModel();
+          eventModel = new DefaultScheduleModel(callendarControler.getSheduleEventList());
+       callendarControler.doSthing();
         
 
     }
@@ -72,18 +71,15 @@ public class ScheduleView implements Serializable {
         }
 
         event = new DefaultScheduleEvent();
+        eventModel = new DefaultScheduleModel(callendarControler.getSheduleEventList());
     }
 
     public void removeEvent() {
-        if (event.getId() != null) {
+        System.out.println("start1");
+        System.out.println(event.getId()+"/////////////////////////////////////////");
             callendarControler.removeEvent(event);
             eventModel.deleteEvent(event);
-        } else {
-            callendarControler.updateEvent(event);
-
-            eventModel.updateEvent(event);
-        }
-
+        
         event = new DefaultScheduleEvent();
     }
 

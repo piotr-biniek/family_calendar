@@ -21,13 +21,11 @@ public abstract class AbstractEntity {
     
     protected abstract Object getBusinessKey();
 
-    @Version
-    @Column(name="version", nullable = false)
-    private int version;
+
 
     @Override
     public String toString() {
-        return this.getClass().getSimpleName() + "[id=" + getId() + ", key=" + getBusinessKey() + ", version=" + version + "]";
+        return this.getClass().getSimpleName() + "[id=" + getId() + ", key=" + getBusinessKey() +  "]";
     }
 
     @Override
