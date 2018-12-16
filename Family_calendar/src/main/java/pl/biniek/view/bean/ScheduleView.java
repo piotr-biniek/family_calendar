@@ -22,6 +22,7 @@ import org.primefaces.model.DefaultScheduleModel;
 import org.primefaces.model.ScheduleEvent;
 import org.primefaces.model.ScheduleModel;
 import pl.biniek.view.controler.CallendarControler;
+import pl.biniek.view.exceptionhandlers.BindingInterfaceWeb;
 
 /**
  *
@@ -29,6 +30,7 @@ import pl.biniek.view.controler.CallendarControler;
  */
 @Named
 @SessionScoped
+@BindingInterfaceWeb
 public class ScheduleView implements Serializable {
 
     @Inject
@@ -75,8 +77,6 @@ public class ScheduleView implements Serializable {
     }
 
     public void removeEvent() {
-        System.out.println("start1");
-        System.out.println(event.getId()+"/////////////////////////////////////////");
             callendarControler.removeEvent(event);
             eventModel.deleteEvent(event);
         

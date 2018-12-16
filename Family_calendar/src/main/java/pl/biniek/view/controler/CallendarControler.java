@@ -46,7 +46,6 @@ public class CallendarControler implements Serializable {
     }
 
     public void doSthing() {
-        System.out.println("############################### OK ###################################");
     }
 
     public void saveNev(ScheduleEvent event) {
@@ -73,7 +72,6 @@ public class CallendarControler implements Serializable {
     }
 
     public void removeEvent(ScheduleEvent event) {
-        System.out.println("start2");
         eventDto.deleteEvent(primeScheduleEventToEvent(event));
         
     }

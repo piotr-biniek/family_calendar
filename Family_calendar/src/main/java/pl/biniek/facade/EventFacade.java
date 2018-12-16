@@ -30,13 +30,7 @@ public class EventFacade extends AbstractFacade<Event> {
     public EventFacade() {
         super(Event.class);
     }
-    public void create(Event entity) {
-        System.out.println(entity.getName());
-  
-        System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ Start");
-        getEntityManager().persist(entity);
-        System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ END");
-    }
+    
 
     
 }

@@ -7,12 +7,15 @@ package pl.biniek.facade;
 
 import java.io.Serializable;
 import java.util.List;
+import javax.interceptor.Interceptors;
 import javax.persistence.EntityManager;
+import pl.biniek.backend.exceptionsandhandlers.ExceptionAndLoggingInterceptorForFACADE;
 
 /**
  *
  * @author java
  */
+@Interceptors(ExceptionAndLoggingInterceptorForFACADE.class)
 public abstract class AbstractFacade<T> implements Serializable{
 
     private Class<T> entityClass;
@@ -25,15 +28,18 @@ public abstract class AbstractFacade<T> implements Serializable{
 
     public void create(T entity) {
         getEntityManager().persist(entity);
+         getEntityManager().flush();
     }
 
     public void edit(T entity) {
         getEntityManager().merge(entity);
+         getEntityManager().flush();
     }
 
     public void remove(T entity) {
-        System.out.println("S4");
+      
         getEntityManager().remove(getEntityManager().merge(entity));
+         getEntityManager().flush();
     }
 
     public T find(Object id) {
