@@ -16,6 +16,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.TableGenerator;
 import javax.validation.constraints.NotNull;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
@@ -24,6 +25,7 @@ import javax.validation.constraints.NotNull;
 @Entity
 @Table(name = "Event")
 
+@XmlRootElement
 public class Event extends AbstractEntity implements Serializable {
 
     @Id
