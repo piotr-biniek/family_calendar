@@ -51,7 +51,7 @@ public class EventDto implements Serializable {
     
   
        
-    private void remove(Event event) {
+    public void remove(Event event) {
         eventFacade.remove(event);
 
     }
