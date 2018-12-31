@@ -12,6 +12,8 @@ import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
+import javax.jws.WebMethod;
+import javax.jws.WebService;
 import pl.biniek.facade.EventFacade;
 
 import pl.biniek.model.*;
@@ -21,6 +23,7 @@ import pl.biniek.model.*;
  * @author java pbi moje!!!!!
  */
 @Stateless
+@WebService(serviceName="EventService")
 @TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
 
 public class EventDto implements Serializable {
@@ -29,19 +32,19 @@ public class EventDto implements Serializable {
     private EventFacade eventFacade;
 
     
-
+ @WebMethod(operationName="getEvents")
     public List<Event> getAllEvents() {
         return eventFacade.findAll();
 
     }
 
-   
+ @WebMethod(operationName="createEvent")   
     public void createEvent(Event event)  {
        
         eventFacade.create(event);
     }
 
-   
+   @WebMethod(operationName="saveEditedEvent")  
     public void saveAfterEdit(Event event) {
 
         eventFacade.edit(event);
@@ -49,13 +52,14 @@ public class EventDto implements Serializable {
     }
 
     
-  
-       
-    public void remove(Event event) {
-        eventFacade.remove(event);
+//  
+//    @WebMethod(operationName="createEvent")     
+//    public void remove(Event event) {
+//        eventFacade.remove(event);
+//
+//    }
 
-    }
-
+    @WebMethod(operationName="deleteEvent")  
     public void deleteEvent(Event event) {
         eventFacade.remove(event);
     }
