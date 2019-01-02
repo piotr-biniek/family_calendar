@@ -17,6 +17,7 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 import pl.biniek.facade.EventFacade;
 
 import pl.biniek.model.*;
@@ -42,9 +43,10 @@ public class EventDto implements Serializable {
     }
    @POST
     @Consumes(MediaType.APPLICATION_JSON)
-    public void createEvent(Event event) {
+    public Response createEvent(Event event) {
 
         eventFacade.create(event);
+        return Response.ok().build();
     }
 
     public void saveAfterEdit(Event event) {
