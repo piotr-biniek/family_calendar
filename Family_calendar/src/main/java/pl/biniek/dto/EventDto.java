@@ -28,7 +28,7 @@ import pl.biniek.model.*;
  */
 @Stateless
 @Path("/events")
-@TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
+//@TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
 
 public class EventDto implements Serializable {
 

@@ -21,7 +21,8 @@ public class ExceptionAndLoggingInterceptorForFACADE {
         StringBuilder sb = new StringBuilder();
         sb.append("Method facade called: " + invocation.getTarget().getClass().getName() + "." + invocation.getMethod().getName());
         sb.append("bu user: " + sessionContext.getCallerPrincipal().getName());
-        sb.append(", SessionID:  " + FacesContext.getCurrentInstance().getExternalContext().getSessionId(false));
+        
+//        sb.append(", SessionID:  " + FacesContext.getCurrentInstance().getExternalContext().getSessionId(false));//todo powoduje wyjątek sespion ID
 
         try {
 
